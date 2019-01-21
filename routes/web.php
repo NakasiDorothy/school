@@ -23,20 +23,15 @@ Route::get('/courses/create','CoursesController@create');
 Route::post('/courses','CoursesController@store');
 Route::get('/courses','CoursesController@index');
 
-Route::group(['prefix'=>'Students'], function() {
+Route::get('/lecturer/create','LecturerController@create');
+Route::post('/lecturer','LecturerController@store');
+Route::get('/lecturer','LecturerController@index');
 
-// Login Routes...
-    Route::get('login', ['as' => 'students.login', 'uses' => 'StudentsAuth\LoginController@showLoginForm']);
-    Route::post('login', ['uses' => 'StudentsAuth\LoginController@login']);
-    Route::post('logout', ['as' => 'students.logout', 'uses' => 'StudentsAuth\LoginController@logout']);
+Route::get('/courseUnits/create','CourseUnitsController@create');
+Route::post('/courseUnits','CourseUnitsController@store');
+Route::get('/courseUnits','CourseUnitsController@index');
 
-// Registration Routes...
-    Route::get('register', ['as' => 'students.register', 'uses' => 'StudentsAuth\RegisterController@showRegistrationForm']);
-    Route::post('register', ['uses' => 'StudentsAuth\RegisterController@register']);
+Route::get('/student/create','StudentController@create');
+Route::post('/student','StudentController@store');
 
-// Password Reset Routes...
-    Route::get('password/reset', ['as' => 'students.password.reset', 'uses' => 'StudentsAuth\ForgotPasswordController@showLinkRequestForm']);
-    Route::post('password/email', ['as' => 'students.password.email', 'uses' => 'StudentsAuth\ForgotPasswordController@sendResetLinkEmail']);
-    Route::get('password/reset/{token}', ['as' => 'students.password.reset.token', 'uses' => 'StudentsAuth\ResetPasswordController@showResetForm']);
-    Route::post('password/reset', ['uses' => 'StudentsAuth\ResetPasswordController@reset']);
-});
+

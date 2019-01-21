@@ -34,7 +34,7 @@ class CoursesController extends Controller
 	    return redirect()->back();
 		}
 		session()->flash('message', 'Course Saved Sucessfully');
-		return view('courses.courseLists');
+		return redirect('/courses');
 	    // return redirect('/courses/create');
     }
 }
