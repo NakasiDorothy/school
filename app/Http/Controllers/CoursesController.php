@@ -11,6 +11,10 @@ class CoursesController extends Controller
 {
 	public function index()
 	{
+		if(!Gate::allows('isAdmin')){
+			abort(404,"Sorry,Can not access Page");
+		}
+
 		$courseLists = course::all();
 
 		return view('courses.courseLists',compact('courseLists'));

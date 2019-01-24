@@ -10,6 +10,9 @@ class StudentController extends Controller
 {
 	public function index()
 	{
+        $studentList = StudentModel::all();
+
+        return view('students.studentList',compact('studentList'));
 
 	}
 
@@ -20,7 +23,7 @@ class StudentController extends Controller
 
     public function store(storeStudent $request)
     {
-    	dd($request);
+    	// dd($request);
     	$student = new StudentModel($request->all());
     	if($student->save())
     	{

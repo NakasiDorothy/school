@@ -23,7 +23,7 @@ class storeStudent extends FormRequest
      */
     public function rules()
     {
-        dd ($this->request);
+        //dd($this->request);
         return [
             'f_name' => 'required',
             'l_name' => 'required',

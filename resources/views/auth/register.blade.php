@@ -1,4 +1,4 @@
-@extends('layouts.students-app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -40,7 +40,22 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="user_type" class="col-md-4 col-form-label text-md-right">{{ __('User Type') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="user_type" type="text" class="form-control{{ $errors->has('user_type') ? ' is-invalid' : '' }}" name="user_type" value="{{ old('user_type') }}" required>
+
+                                @if ($errors->has('user_type'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('user_type') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
