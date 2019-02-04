@@ -30,7 +30,7 @@ class storeStudent extends FormRequest
             'phone_no' => 'required',
             'email' => 'required',
             'address' => 'required',
-            'filename' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            // 'filename' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             
 
         ];

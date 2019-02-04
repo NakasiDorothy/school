@@ -28,7 +28,8 @@ class storeLecturer extends FormRequest
             'l_name'=> 'required',
             'phone_no'=> 'required',
             'email'=> 'required',
-            'address'=> 'required'
+            'address'=> 'required',
+            'password'=>'required'
         ];
     }
 }

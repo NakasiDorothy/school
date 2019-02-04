@@ -37,12 +37,12 @@
 			
 		</div>
 
-		<div class="input-group control-group increment" >
+		{{-- <div class="input-group control-group increment" >
           <input type="file" name="filename" class="form-control">
           <div class="input-group-btn"> 
             <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
           </div>
-        </div>
+        </div> --}}
 
         <div class="form-group">
         	<button type="submit" class="btn btn-success">Submit</button>

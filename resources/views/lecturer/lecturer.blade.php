@@ -31,6 +31,10 @@
 			<label for="address">Address:</label>
 			<input type="text" class="form-control" id="address" name="address">
 		</div>
+		<div class="form-group">
+			<label for="password">Password:</label>
+			<input type="password" class="form-control" id="password" name="password">
+		</div>
 
 		<div class="form-group">
 			<button type="submit" class="btn btn-success">Register</button>

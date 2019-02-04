@@ -95,7 +95,7 @@
                                 </a>
                             </li>
                             
-                                                     
+                                           
                             <li class="nav-item">
                             <div  class="dropdown">
                             <button  type="button" class= "btn btn-light dropdown-toggle" data-toggle="dropdown">
@@ -108,8 +108,8 @@
                             </div>
 
                             </li>
-                           
-                           @can('isLecturer') 
+                        
+                            @hasanyrole('isLecturer|isAdmin') 
                             <li class="nav-item">
                                 <div class="dropdown">
                                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
@@ -122,9 +122,9 @@
                                 </div>
                                 
                             </li>
-                            @endcan
-                            
-                            
+                            @endhasanyrole
+                          
+                            @hasanyrole('isStudent|isAdmin')
                             <li class="nav-item">
                                 <div class="dropdown">
                                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
@@ -138,6 +138,7 @@
                                 </div>
                                
                             </li>
+                            @endhasanyrole
                         </ul>
                     </div>
                 </nav>

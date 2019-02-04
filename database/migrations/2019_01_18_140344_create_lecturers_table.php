@@ -20,6 +20,7 @@ class CreateLecturersTable extends Migration
             $table->integer('phone_no');
             $table->string('email');
             $table->string('address');
+            $table->string('password');
             $table->timestamps();
         });
     }

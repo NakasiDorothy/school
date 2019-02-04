@@ -26,6 +26,8 @@ Route::get('/courses','CoursesController@index');
 Route::get('/lecturer/create','LecturerController@create');
 Route::post('/lecturer','LecturerController@store');
 Route::get('/lecturer','LecturerController@index');
+Route::post('/login/lecturer','LecturerController@authenticate');
+Route::get('/lecturer/{id}','LecturerController@show');
 
 Route::get('/courseUnits/create','CourseUnitsController@create');
 Route::post('/courseUnits','CourseUnitsController@store');
@@ -33,5 +35,6 @@ Route::get('/courseUnits','CourseUnitsController@index');
 
 Route::get('/student/create','StudentController@create');
 Route::post('/student','StudentController@store');
-
+Route::get('/student','StudentController@index');
+Route::get('/student/{id}','StudentController@show');
 

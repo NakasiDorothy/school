@@ -4,18 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\storeCourse;
-use App\course;
+use App\Course;
 
 class CoursesController extends Controller
 
 {
 	public function index()
 	{
-		if(!Gate::allows('isAdmin')){
-			abort(404,"Sorry,Can not access Page");
-		}
-
-		$courseLists = course::all();
+		
+		$courseLists = Course::all();
 
 		return view('courses.courseLists',compact('courseLists'));
 	}
@@ -32,8 +29,8 @@ class CoursesController extends Controller
 	    //     'course_name' => 'required'
 	    // ]);
 
-	    $course = new course($request->all());
-	    if(!$course->save()){
+	    $Course = new Course($request->all());
+	    if(!$Course->save()){
 	    	session()->flash('message', 'Course NOT Saved');
 	    return redirect()->back();
 		}
