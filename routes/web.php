@@ -37,4 +37,6 @@ Route::get('/student/create','StudentController@create');
 Route::post('/student','StudentController@store');
 Route::get('/student','StudentController@index');
 Route::get('/student/{id}','StudentController@show');
+Route::get('/student/{id}/edit','StudentController@edit');
+Route::patch('/student/{id}','StudentController@update');
 

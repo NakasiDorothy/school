@@ -21,6 +21,11 @@ class CreateLecturersTable extends Migration
             $table->string('email');
             $table->string('address');
             $table->string('password');
+            $table->string('filename')->nullable();
+            $table->string('mime')->nullable();
+            $table->string('original_filename')->nullable();
+
+
             $table->timestamps();
         });
     }

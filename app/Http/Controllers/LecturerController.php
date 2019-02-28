@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 // namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Vendor\Symfony\Http\Foundation\File\UploadedFile;
 use App\Http\Requests\storeLecturer;
 use App\lecturer;
+
 // use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LecturerController extends Controller
@@ -28,27 +32,76 @@ class LecturerController extends Controller
 
     public function index()
     {
-    	$lecturerList = lecturer::all();
+    	$lecturerList = Lecturer::all();
 
     	return view('lecturer.lecturerList',compact('lecturerList'));
     }
+
 
     public function create()
     {
     	return view('lecturer.lecturer');
     }
 
-    public function store(storeLecturer $request)
-    {
-    	$lecturer = new lecturer($request->all());
-    	if(!$lecturer->save())
-    	{
-    		session()->flash('message','Lecturer not Saved');
-    		return redirect()->back();
-    	}
-    	session()->flash('message','Lecturer Saved Successfully');
-    	return redirect('/lecturer');
+    // public function store(storeLecturer $request)
+    // {   
+        
     	
+    //     $lecturer = new Lecturer($request->all());
+
+        
+    //     if(!$lecturer->save())
+    // 	{
+    // 		session()->flash('message','Lecturer not Saved');
+    // 		return redirect()->back();
+    // 	}
+    // 	session()->flash('message','Lecturer Saved Successfully');
+    // 	return redirect('/lecturer');
+    	
+    // }
+
+     public function store(storeLecturer $request)
+
+    {   
+         // dd($request);
+
+
+        
+        // request()->validate([
+
+        //     'f_name' => 'required',
+        //     'l_name'=> 'required',
+        //     'phone_no'=> 'required',
+        //     'email'=> 'required',
+        //     'address'=> 'required',
+        //     'password'=>'required'
+        // ]);
+
+        $profile = $request->file('filename');
+        // dd($profile);
+        $extension = $profile->getClientOriginalExtension();
+        Storage::disk('public')->put($profile->getFilename().'.'.$extension,  File::get($profile));
+
+        $lecturer = new Lecturer();
+        $lecturer->f_name = $request->f_name;
+        $lecturer->l_name = $request->l_name;
+        $lecturer->phone_no = $request->phone_no;
+        $lecturer->email = $request->email;
+        $lecturer->address = $request->address;
+        $lecturer->password = $request->password;
+        $lecturer->mime=$profile->getClientMimeType();
+        $lecturer->original_filename = $profile->getClientOriginalName();
+        $lecturer->filename = $profile->getFilename().'.'.$extension; 
+
+        
+        if(!$lecturer->save())
+        {
+            session()->flash('message','Lecturer not Saved');
+            return redirect()->back();
+        }
+        session()->flash('message','Lecturer Saved Successfully');
+        return redirect('/lecturer');
+        
     }
 
     /**

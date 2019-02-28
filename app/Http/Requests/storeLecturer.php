@@ -31,5 +31,9 @@ class storeLecturer extends FormRequest
             'address'=> 'required',
             'password'=>'required'
         ];
+
+       
+       
+        
     }
 }

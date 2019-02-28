@@ -14,12 +14,12 @@
 				<center>
 					<h6>Info</h6>
 					<div class="col-sm-8 blog-main">								
-					{{ $lecturer->f_name }}
-						{{ $lecturer->l_name }}
-						{{ $lecturer->phone_no }}
-						{{ $lecturer->email }}
-						{{ $lecturer->address }}
-					    {{ $lecturer->password }}
+					{{ $student->f_name }}
+						{{ $student->l_name }}
+						{{ $student->phone_no }}
+						{{ $student->email }}
+						{{ $student->address }}
+					    {{ $student->password }}
 					 </div>
 				</center>
 				

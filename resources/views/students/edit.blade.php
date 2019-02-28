@@ -1,8 +1,9 @@
 @extends('layouts.app')
-	@section('content')
+@section('content')
 
-	<h1>Register a Lecturer</h1>
-	<form method="POST" action="/lecturer" enctype="multipart/form-data">
+<h1>Edit: {{ $student->f_name}}</h1>
+	
+	<form method="PATCH" action="">
 		@csrf
 		@include('layouts.errors')
 		@include('layouts.success')
@@ -37,18 +38,11 @@
 		</div>
 
 		<div class="form-group">
-			<label for="filename">Profile Picture:</label>
-			<input type="file" class="form-control" id="filename" name="filename">
-		</div
-
-		<div class="form-group">
 			<button type="submit" class="btn btn-success">Register</button>
 			
 		</div>
 
 
 	</form>
-
-
 
 @endsection
