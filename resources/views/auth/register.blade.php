@@ -39,7 +39,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                       {{--  <div class="form-group row">
                             <label for="user_type" class="col-md-4 col-form-label text-md-right">{{ __('User Type') }}</label>
 
                             <div class="col-md-6">
@@ -49,15 +49,15 @@
                                     <option value="isStudent">isStudent</option>
                                     <option value="isAdmin">isAdmin</option>
                                 </select>
-                                {{-- <input id="user_type" type="text" class="form-control{{ $errors->has('user_type') ? ' is-invalid' : '' }}" name="user_type" value="{{ old('user_type') }}" required> --}}
+                                <input id="user_type" type="text" class="form-control{{ $errors->has('user_type') ? ' is-invalid' : '' }}" name="user_type" value="{{ old('user_type') }}" required>
 
-                                {{-- @if ($errors->has('user_type'))
+                                @if ($errors->has('user_type'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('user_type') }}</strong>
                                     </span>
-                                @endif --}}
+                                @endif
                             </div>
-                        </div>
+                        </div> --}}
                         
 
                         <div class="form-group row">

@@ -109,7 +109,7 @@
 
                             </li>
                         
-                            @hasanyrole('isLecturer|isAdmin') 
+                           {{--  @hasanyrole('isLecturer|isAdmin')  --}}
                             <li class="nav-item">
                                 <div class="dropdown">
                                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
@@ -122,9 +122,9 @@
                                 </div>
                                 
                             </li>
-                            @endhasanyrole
+                            {{-- @endhasanyrole
                           
-                            @hasanyrole('isStudent|isAdmin')
+                            @hasanyrole('isStudent|isAdmin') --}}
                             <li class="nav-item">
                                 <div class="dropdown">
                                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
@@ -138,7 +138,7 @@
                                 </div>
                                
                             </li>
-                            @endhasanyrole
+                        {{--     @endhasanyrole --}}
                         </ul>
                     </div>
                 </nav>
