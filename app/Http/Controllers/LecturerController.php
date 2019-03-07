@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 // namespace App\Http\Controllers\Auth;
 
+use Image;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
-use Vendor\Symfony\Http\Foundation\File\UploadedFile;
+// use Illuminate\Intervention\ImageServiceProvider;
+// use Intervention\Image\Facades\Image;    
+// use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\File;
+// use Vendor\Symfony\Http\Foundation\File\UploadedFile;
+// use vendor\intervention\image\src\Intervention\Image;
 use App\Http\Requests\storeLecturer;
-use App\lecturer;
+use App\Lecturer;
 
 // use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -63,38 +67,45 @@ class LecturerController extends Controller
      public function store(storeLecturer $request)
 
     {   
-         // dd($request);
+        $originalImage= $request->file('filename');
+        $thumbnailImage = Image::make($originalImage);
+        $thumbnailPath = public_path().'/thumbnail/';
+        $originalPath = public_path().'/images/';
+        $thumbnailImage->save($originalPath.time().$originalImage->getClientOriginalName());
 
+        $thumbnailImage->resize(150,150);
+        $thumbnailImage->save($thumbnailPath.time().$originalImage->getClientOriginalName()); 
+        // $profile = $request->file('filename');
+        // // dd($profile);
+        // $extension = $profile->getClientOriginalExtension();
+        // Storage::disk('public')->put($profile->getFilename().'.'.$extension,  File::get($profile));
 
-        
-        // request()->validate([
-
-        //     'f_name' => 'required',
-        //     'l_name'=> 'required',
-        //     'phone_no'=> 'required',
-        //     'email'=> 'required',
-        //     'address'=> 'required',
-        //     'password'=>'required'
-        // ]);
-
-        $profile = $request->file('filename');
-        // dd($profile);
-        $extension = $profile->getClientOriginalExtension();
-        Storage::disk('public')->put($profile->getFilename().'.'.$extension,  File::get($profile));
-
-        $lecturer = new Lecturer();
-        $lecturer->f_name = $request->f_name;
-        $lecturer->l_name = $request->l_name;
-        $lecturer->phone_no = $request->phone_no;
-        $lecturer->email = $request->email;
-        $lecturer->address = $request->address;
-        $lecturer->password = $request->password;
-        $lecturer->mime=$profile->getClientMimeType();
-        $lecturer->original_filename = $profile->getClientOriginalName();
-        $lecturer->filename = $profile->getFilename().'.'.$extension; 
+        // $lecturer = new Lecturer();
+        // $lecturer->f_name = $request->f_name;
+        // $lecturer->l_name = $request->l_name;
+        // $lecturer->phone_no = $request->phone_no;
+        // $lecturer->email = $request->email;
+        // $lecturer->address = $request->address;
+        // $lecturer->password = $request->password;
+        // $lecturer->mime=$profile->getClientMimeType();
+        // $lecturer->original_filename = $profile->getClientOriginalName();
+        // $lecturer->filename = $profile->getFilename().'.'.$extension; 
 
         
-        if(!$lecturer->save())
+        // if(!$lecturer->save())
+        // {
+        //     session()->flash('message','Lecturer not Saved');
+        //     return redirect()->back();
+        // }
+        // session()->flash('message','Lecturer Saved Successfully');
+        // return redirect('/lecturer');
+        $lecturer =  new Lecturer($request->all());
+
+         $lecturer->filename=time().$originalImage->getClientOriginalName();
+
+        // $lecturer->update();
+
+         if(!$lecturer->save())
         {
             session()->flash('message','Lecturer not Saved');
             return redirect()->back();
@@ -112,7 +123,7 @@ class LecturerController extends Controller
      */
     public function show($id)
     {
-        $lecturer = lecturer::find($id);
+        $lecturer = Lecturer::find($id);
 
         return view('lecturer.show',compact('lecturer'));
     }
@@ -125,7 +136,9 @@ class LecturerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $lecturer = Lecturer::find($id);
+
+        return view('lecturer.edit', compact('lecturer'));
     }
 
     /**
@@ -137,7 +150,15 @@ class LecturerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $lecturer = Lecturer::find($id);
+
+        $lecturer->update($request->all());
+
+        if(!$lecturer->save())
+        {
+            return redirect()->back();
+        }
+        return redirect('/lecturer');
     }
 
     /**
@@ -148,6 +169,10 @@ class LecturerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $lecturer = Lecturer::find($id);
+
+        $lecturer->delete();
+
+        return redirect('/lecturer');
     }
 }

@@ -13,7 +13,7 @@
 			     	<th scope="col">Phone no</th>
 			      	<th scope="col">Email</th>
 			   		<th scope="col">Address</th>
-			       	<th scope="col">Password</th>
+			    {{--    	<th scope="col">Password</th> --}}
 				</tr>
   				</thead>
   				<tbody>
@@ -24,7 +24,7 @@
 							<td>{{ $student->phone_no }}</td>
 							<td>{{ $student->email }}</td>
 							<td>{{ $student->address }}</td>
-						    <td>{{ $student->password }}</td>
+						   {{--  <td>{{ $student->password }}</td> --}}
 						    {{-- <td>{{ $student->filename }}</td> --}}
 
     					</tr>

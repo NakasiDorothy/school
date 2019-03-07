@@ -4,7 +4,7 @@
 	<h1>Lecturer List</h1>
 	
 
-	{{-- 	<div class="container">
+		<div class="container">
 			<table class="table">
   				<thead class="thead-dark">
 			    <tr>
@@ -35,9 +35,9 @@
 				</tbody>
 			</table>
 	
-		</div> --}}
+		</div>
 	
-	<div class="row">
+	{{-- <div class="row">
 
 		<div class="col-sm-4">
 
@@ -47,13 +47,13 @@
 				
 					<div class="card">
 				
-						<img src="{{url('uploads/'.$lecturer->filename)}}" class="card-img-top" alt="{{ $lecturer->filename }}">
+						<img src="/thumbnail/{{$lecturer->filename}}" class="card-img-top" alt="{{ $lecturer->filename }}">
 
 				
 
-					{{-- @foreach($lecturerList as $lecturer) --}}
-
-						<p>{{ $lecturer->f_name }}</p>
+					
+						<a href="/lecturer/{{ $lecturer->id }}"><p>{{ $lecturer->f_name }}</p></a>
+						
 						<p>{{ $lecturer->l_name }}</p>
 						<p>{{ $lecturer->phone_no }}</p>
 						<p>{{ $lecturer->email }}</p>
@@ -70,8 +70,8 @@
 		
 		<div class="col-sm-4">
 
-{{-- 			<div class="card">
- --}}
+			<div class="card">
+
 				<div class="container">
 
 					@endforeach
@@ -81,6 +81,6 @@
 			</div>
 			
 		</div>
-	</div>
+	</div> --}}
 
 @endsection 

@@ -28,13 +28,13 @@ class StudentController extends Controller
     {
     	// dd($request);
     	$student = new Student($request->all());
-    	if($student->save())
+    	if(!$student->save())
     	{
     		session()->flash('message','Failed to Save');
     		return redirect()->back();
     	}
     	session()->flash('message','Student saved Successfully');
-    	return redirect()->back();
+    	return redirect('/student');
     }
         /**
      * Display the specified resource.
@@ -75,7 +75,12 @@ class StudentController extends Controller
 
         $student->update($request->all());
 
-        return redirect('student');
+        if(!$student->save())
+        {
+            return redirect()->back();
+        }
+
+        return redirect('/student');
     }
 
     /**
@@ -86,7 +91,12 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $student = Student::find($id);
+        
+        $student->delete();
+
+        return redirect ('/student');
     }
     
 }

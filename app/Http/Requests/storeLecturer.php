@@ -29,7 +29,8 @@ class storeLecturer extends FormRequest
             'phone_no'=> 'required',
             'email'=> 'required',
             'address'=> 'required',
-            'password'=>'required'
+            'password'=>'required',
+            'filename' => 'image|required|mimes:jpeg,png,jpg,gif,svg'
         ];
 
        

@@ -13,15 +13,42 @@
 				<center>
 					<h6>Info</h6>
 					<div class="col-sm-8 blog-main">
-						<h4>{{ $lecturer->f_name }}</h4> 
-						<h4>{{ $lecturer->l_name }}</h4>
-						{{ $lecturer->phone_no }}
-						{{ $lecturer->email }}
-						{{ $lecturer->address }}
-					    {{ $lecturer->password }}
+						<div class="row">
+							<div class="col-sm-4">
+								<h4>{{ $lecturer->f_name }}</h4>
+							</div>
+							<div class="col-sm-4">
+								<h4>{{ $lecturer->l_name }}</h4>
+							</div>
+						</div>
+		
+						<p>{{ $lecturer->phone_no }}</p>
+						<p>{{ $lecturer->email }}</p>
+						<p>{{ $lecturer->address }}</p>
+						<p>{{ $lecturer->password }}</p>
+					    
 					</div>
 				</center>
+
+				<div class="card-body">
+				<div class="row">
+					<div col-sm-4>
+						<a href="/lecturer/{{ $lecturer->id }}/edit" class="btn btn-success">Edit</a>
+						
+					</div>
+					<div col-sm-4>
+						<form action="{{ route('lecturer.destroy', $lecturer->id)}}" method="post">
+							@csrf
+							@method('DELETE')
+							<input type="submit" value="Delete" class="btn btn-danger">
+						</form>
+					</div>
+					
+				</div>
 			</div>
+			</div>
+
+
 
 		</div>
 	</div>

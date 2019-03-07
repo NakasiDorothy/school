@@ -17,7 +17,7 @@
   				<tbody>
   					@foreach($courseLists as $course)
     					<tr>
-		                    <td>{{ $course->course_code }}</td>
+		                   <td><a href="/courses/{{ $course->id }}">{{ $course->course_code }}</a></td> 
 							<td>{{ $course->course_name }}</td>
 
     					</tr>
